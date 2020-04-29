@@ -34,8 +34,8 @@ def askNumbersScenario3():
     Asks for three numbers from the user
     :return: angle, speed, heightCannon
     """
-    angle = checkNumberFloat(input("Height of the cannon above the water: "))
-    speed = checkNumberFloat(input("Angle of the cannon : "))
+    angle = checkNumberFloat(input("Angle of the cannon: "))
+    speed = checkNumberFloat(input("Speed of the cannonball : "))
     heightCannon = checkNumberFloat(input("Height of the cannon above target: "))
     return angle, speed, heightCannon
 
@@ -62,6 +62,20 @@ def menu():
 
 
 # --- Process --- #
+
+
+def checkInt(value):
+    """
+    Test if the value can be converted into an integer.
+    :param value: float value
+    :return: float or integer value
+    """
+    if int(value) == value:
+        return int(value)
+    else:
+        return value
+
+
 
 
 def checkNumberFloat(value):
@@ -136,6 +150,7 @@ def checkNumberInt(value):
         newNum = input("Please enter a number: ")
         return checkNumberInt(newNum)
 
+
 # --- MAIN --- #
 while True:
     # -- inputs -- #
@@ -151,3 +166,15 @@ while True:
         angle, speed, heightCannon = askNumbersScenario3()
 
     # -- Process -- #
+    if choice == 1:
+        answer = scenario1(height, speed)
+    elif choice == 2:
+        answer = scenario2(angle, speed)
+    elif choice == 3:
+        answer = scenario3(angle, speed, heightCannon)
+    else:
+        print("Something went wrong! Your menu choice doesn't exist!")
+
+    answer = checkInt(answer)
+    # -- Output -- #
+    print(answer)
